@@ -1,0 +1,10 @@
+# Rahasia
+.env
+.env.*
+!.env.example
+
+# Dependensi dan artefak lokal
+node_modules/
+*.log
+npm-debug.log*
+.DS_Store

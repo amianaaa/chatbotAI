@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tirta – Panduan Kualitas Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Gelembung dekoratif di latar -->
+  <div class="bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="app">
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c2.6 3.6 6.5 7.4 6.5 11.6a6.5 6.5 0 0 1-13 0C5.5 9.9 9.4 6.1 12 2.5z" fill="url(#logoGrad)"/><defs><linearGradient id="logoGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ee7ff"/><stop offset="1" stop-color="#1d6fe0"/></linearGradient></defs></svg>
+        </div>
+        <span class="brand-name">TIRTA</span>
+        <button class="icon-btn" type="button" aria-label="Ciutkan panel">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="M9 4v16"/></svg>
+        </button>
+      </div>
+
+      <nav class="menu">
+        <a href="#" class="menu-item active" id="newChat" data-view="chat">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          Chat Baru
+        </a>
+        <a href="#" class="menu-item" id="openGuide" data-view="guide">
+          <svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M8 7h6"/></svg>
+          Panduan Kualitas Air
+        </a>
+        <a href="#" class="menu-item" id="openOutage" data-view="outage">
+          <svg viewBox="0 0 24 24"><path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Info Gangguan
+          <span class="tag">Simulasi</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-note">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <p>Tirta memberi panduan awal, bukan pengganti verifikasi resmi PDAM atau uji laboratorium.</p>
+      </div>
+    </aside>
+
+    <!-- ===== Area utama ===== -->
+    <main class="main">
+      <header class="topbar">
+        <!-- Pilihan model: daftar diisi oleh chat.js dari /api/models -->
+        <div class="model-select">
+          <button class="model-pill" id="modelButton" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg>
+            <span id="modelLabel">Tirta · Flash</span>
+            <svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <ul class="model-menu" id="modelMenu" role="listbox" aria-label="Pilih model AI" hidden></ul>
+        </div>
+      </header>
+
+      <div class="stage" id="stage">
+        <!-- Hero tengah -->
+        <section class="hero">
+          <div class="mascot" aria-hidden="true">
+            <svg viewBox="0 0 240 258">
+              <defs>
+                <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7fe3ff"/>
+                  <stop offset=".55" stop-color="#3b9bf5"/>
+                  <stop offset="1" stop-color="#1d4fd8"/>
+                </linearGradient>
+                <linearGradient id="arm" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4aa8f7"/>
+                  <stop offset="1" stop-color="#1e56d9"/>
+                </linearGradient>
+                <linearGradient id="scarf" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#5ff5e0"/>
+                  <stop offset="1" stop-color="#14b8c4"/>
+                </linearGradient>
+                <radialGradient id="ripple" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#3b9bf5" stop-opacity=".35"/>
+                  <stop offset="1" stop-color="#3b9bf5" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- riak air di bawah -->
+              <ellipse class="ripple" cx="120" cy="240" rx="70" ry="12" fill="url(#ripple)"/>
+              <ellipse cx="120" cy="240" rx="46" ry="7" fill="none" stroke="#7cc8ff" stroke-opacity=".5" stroke-width="2"/>
+
+              <g class="mascot-body">
+                <!-- kaki -->
+                <ellipse cx="98" cy="210" rx="14" ry="10" fill="#1d4fd8"/>
+                <ellipse cx="142" cy="210" rx="14" ry="10" fill="#1d4fd8"/>
+
+                <!-- tangan terbuka -->
+                <path d="M62 160c-18 4-34 10-40 22-3 6 3 10 9 7 6 6 14 5 18-1 9-3 17-10 22-18z" fill="url(#arm)"/>
+                <path d="M178 160c18 4 34 10 40 22 3 6-3 10-9 7-6 6-14 5-18-1-9-3-17-10-22-18z" fill="url(#arm)"/>
+
+                <!-- tubuh tetesan air -->
+                <path d="M120 14c18 34 64 74 64 128a64 64 0 0 1-128 0c0-54 46-94 64-128z" fill="url(#body)"/>
+                <!-- kilau -->
+                <path d="M88 82c-10 16-18 32-19 50" stroke="#fff" stroke-opacity=".7" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <circle cx="96" cy="66" r="5" fill="#fff" fill-opacity=".75"/>
+                <!-- tetes kecil di dahi -->
+                <path d="M120 74c4 6 8 10 8 15a8 8 0 0 1-16 0c0-5 4-9 8-15z" fill="#5ff5e0"/>
+
+                <!-- mata -->
+                <g class="eyes">
+                  <ellipse cx="96" cy="128" rx="15" ry="18" fill="#0b1630"/>
+                  <ellipse cx="144" cy="128" rx="15" ry="18" fill="#0b1630"/>
+                  <ellipse cx="96" cy="128" rx="11" ry="14" fill="none" stroke="#3b6ee8" stroke-width="2.5"/>
+                  <ellipse cx="144" cy="128" rx="11" ry="14" fill="none" stroke="#3b6ee8" stroke-width="2.5"/>
+                  <circle cx="101" cy="120" r="5.5" fill="#fff"/>
+                  <circle cx="149" cy="120" r="5.5" fill="#fff"/>
+                  <circle cx="91" cy="135" r="2.2" fill="#fff"/>
+                  <circle cx="139" cy="135" r="2.2" fill="#fff"/>
+                </g>
+                <!-- pipi -->
+                <ellipse cx="78" cy="152" rx="8" ry="4" fill="#9fdcff" fill-opacity=".7"/>
+                <ellipse cx="162" cy="152" rx="8" ry="4" fill="#9fdcff" fill-opacity=".7"/>
+                <!-- senyum -->
+                <path d="M112 152q8 7 16 0" stroke="#0b1630" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+                <!-- syal -->
+                <path d="M68 170c30 14 74 14 104 0l4 14c-34 18-78 18-112 0z" fill="url(#scarf)"/>
+                <path d="M104 180l16 30 16-30z" fill="url(#scarf)"/>
+                <path d="M104 180l16 30 16-30" fill="none" stroke="#0ea5b7" stroke-width="2" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+
+          <h1>Ada keluhan air hari ini?</h1>
+          <p class="subtitle">Ceritakan kondisi air di rumah Anda. Tirta membantu langkah awal dan menyusun laporan untuk PDAM.</p>
+
+          <!-- Isi percakapan diisi oleh chat.js; tampil setelah pesan pertama dikirim -->
+          <div class="messages" id="messages" aria-live="polite"></div>
+
+          <!-- Tombol ringkasan: muncul setelah beberapa kali tanya-jawab -->
+          <div class="summary-bar" id="summaryBar" hidden>
+            <button class="summary-btn" id="summaryButton" type="button">
+              <svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg>
+              Buat ringkasan laporan
+            </button>
+          </div>
+
+          <!-- Pratinjau lampiran sebelum dikirim -->
+          <div class="attachment" id="attachment" hidden>
+            <img id="attachmentThumb" alt="" hidden>
+            <span class="attachment-ic" id="attachmentIcon" hidden>
+              <svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+            </span>
+            <span class="attachment-name" id="attachmentName"></span>
+            <button type="button" class="attachment-remove" id="removeAttachment" aria-label="Hapus lampiran">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+
+          <form class="composer composer-lg" id="heroForm" autocomplete="off">
+            <button class="round-btn attach-btn" id="attachButton" type="button" aria-label="Unggah foto atau dokumen" title="Unggah foto atau dokumen">
+              <svg viewBox="0 0 24 24"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/><circle cx="9" cy="9" r="2"/><path d="m14 19.5 3-3 3 3"/><path d="M17 22v-5.5"/></svg>
+            </button>
+            <input type="text" id="heroInput" placeholder="Tulis keluhan Anda di sini..." maxlength="1000">
+            <!-- Input suara: disembunyikan oleh chat.js jika browser tidak mendukung -->
+            <button class="mic-btn" id="micButton" type="button" aria-label="Bicara untuk mengetik" title="Bicara untuk mengetik" aria-pressed="false" hidden>
+              <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+            </button>
+            <button class="send-btn" id="sendButton" type="submit" aria-label="Kirim">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <!-- Tombol Stop: menggantikan tombol kirim selama menunggu jawaban -->
+            <button class="send-btn stop-btn" id="stopButton" type="button" aria-label="Hentikan jawaban" title="Hentikan jawaban" hidden>
+              <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/></svg>
+            </button>
+          </form>
+
+          <div class="chips">
+            <button class="chip" type="button" data-prompt="Air di rumah saya keruh.">
+              <span class="chip-ic ic-keruh"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/><path d="M9 14h6"/></svg></span>
+              Air Keruh
+            </button>
+            <button class="chip" type="button" data-prompt="Warna air di rumah saya berubah.">
+              <span class="chip-ic ic-warna"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></span>
+              Berubah Warna
+            </button>
+            <button class="chip" type="button" data-prompt="Air di rumah saya berbau tidak biasa.">
+              <span class="chip-ic ic-bau"><svg viewBox="0 0 24 24"><path d="M5 9c2-2 4 2 6 0s4 2 6 0M5 14c2-2 4 2 6 0s4 2 6 0"/></svg></span>
+              Bau Tidak Biasa
+            </button>
+            <button class="chip" type="button" data-prompt="Ada endapan atau pasir di air rumah saya.">
+              <span class="chip-ic ic-endapan"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="1.6"/><circle cx="13" cy="17" r="1.6"/><circle cx="16" cy="13" r="1.6"/><circle cx="10" cy="10" r="1.6"/><path d="M4 20h16"/></svg></span>
+              Endapan / Pasir
+            </button>
+            <button class="chip" type="button" data-prompt="Rasa air di rumah saya berubah.">
+              <span class="chip-ic ic-rasa"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 8a3 3 0 0 1-6 0z"/><path d="M12 14v7M8 21h8"/></svg></span>
+              Rasa Berubah
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===== Halaman Panduan Kualitas Air ===== -->
+      <section class="guide" id="guide" hidden aria-labelledby="guideTitle">
+        <div class="guide-inner">
+          <header class="guide-hero">
+            <span class="guide-eyebrow">Panduan</span>
+            <h1 id="guideTitle">Panduan Kualitas Air</h1>
+            <p>Langkah awal yang bisa Anda lakukan saat air di rumah terlihat, tercium, atau terasa tidak seperti biasanya.</p>
+          </header>
+
+          <div class="guide-notice" role="note">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <p><strong>Panduan umum, bukan SOP resmi PDAM.</strong> Isi halaman ini akan diperbarui setelah diverifikasi dengan sumber resmi. Keamanan air hanya dapat dipastikan melalui pemeriksaan resmi.</p>
+          </div>
+
+          <!-- 1. Kenali jenis keluhan -->
+          <section class="guide-section">
+            <h2><span class="step-no">1</span>Kenali jenis keluhan</h2>
+            <p class="guide-lead">Catat apa yang Anda amati. Daftar di bawah adalah kategori keluhan, bukan diagnosis penyebab.</p>
+            <div class="guide-cards">
+              <article class="guide-card">
+                <span class="chip-ic ic-keruh"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/><path d="M9 14h6"/></svg></span>
+                <h3>Air keruh</h3>
+                <p>Air tampak tidak jernih atau berkabut saat ditampung di gelas bening.</p>
+                <p class="note"><b>Catat:</b> seberapa keruh, dan apakah berubah setelah didiamkan.</p>
+              </article>
+              <article class="guide-card">
+                <span class="chip-ic ic-warna"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></span>
+                <h3>Berubah warna</h3>
+                <p>Air terlihat kecokelatan, kekuningan, atau warna lain yang tidak biasa.</p>
+                <p class="note"><b>Catat:</b> warna yang terlihat dan kapan mulai terjadi.</p>
+              </article>
+              <article class="guide-card">
+                <span class="chip-ic ic-bau"><svg viewBox="0 0 24 24"><path d="M5 9c2-2 4 2 6 0s4 2 6 0M5 14c2-2 4 2 6 0s4 2 6 0"/></svg></span>
+                <h3>Bau tidak biasa</h3>
+                <p>Tercium bau yang berbeda dari biasanya saat air dialirkan atau ditampung.</p>
+                <p class="note"><b>Catat:</b> seperti apa baunya dan seberapa kuat.</p>
+              </article>
+              <article class="guide-card">
+                <span class="chip-ic ic-endapan"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="1.6"/><circle cx="13" cy="17" r="1.6"/><circle cx="16" cy="13" r="1.6"/><circle cx="10" cy="10" r="1.6"/><path d="M4 20h16"/></svg></span>
+                <h3>Endapan / partikel</h3>
+                <p>Ada pasir, butiran, atau partikel yang mengendap atau melayang di air.</p>
+                <p class="note"><b>Catat:</b> jenis dan banyaknya partikel.</p>
+              </article>
+              <article class="guide-card">
+                <span class="chip-ic ic-rasa"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 8a3 3 0 0 1-6 0z"/><path d="M12 14v7M8 21h8"/></svg></span>
+                <h3>Rasa berubah</h3>
+                <p>Rasa air berbeda dari biasanya. Jangan mencicipi air yang dicurigai hanya untuk memeriksa.</p>
+                <p class="note"><b>Catat:</b> sejak kapan perubahan dirasakan.</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- 2. Langkah awal -->
+          <section class="guide-section">
+            <h2><span class="step-no">2</span>Langkah awal yang hati-hati</h2>
+            <ol class="guide-steps">
+              <li><strong>Tunda penggunaan untuk minum dan memasak</strong> sampai ada arahan resmi PDAM.</li>
+              <li><strong>Periksa cakupannya.</strong> Apakah terjadi di satu keran atau di semua keran? Apakah tetangga mengalami hal serupa?</li>
+              <li><strong>Catat waktunya.</strong> Kapan kondisi mulai terlihat, dan apakah terjadi setelah gangguan aliran atau perbaikan?</li>
+              <li><strong>Dokumentasikan.</strong> Foto air di gelas bening dengan cahaya yang cukup. Foto membantu menggambarkan tampilan, tetapi tidak membuktikan air aman.</li>
+              <li><strong>Laporkan</strong> ke kanal pengaduan resmi PDAM setempat, terutama jika kondisi berlanjut atau memburuk.</li>
+            </ol>
+          </section>
+
+          <!-- 3. Kapan perlu bantuan segera -->
+          <section class="guide-section guide-alert">
+            <h2><span class="step-no">3</span>Segera cari bantuan jika</h2>
+            <ul>
+              <li>tercium bau yang sangat menyengat;</li>
+              <li>muncul iritasi pada kulit atau mata setelah terkena air;</li>
+              <li>ada gejala kesehatan setelah menggunakan air.</li>
+            </ul>
+            <p>Hentikan penggunaan air yang dicurigai, hubungi tenaga kesehatan bila ada keluhan kesehatan, dan laporkan ke PDAM.</p>
+          </section>
+
+          <!-- 4. Informasi untuk laporan -->
+          <section class="guide-section">
+            <h2><span class="step-no">4</span>Siapkan informasi ini saat melapor</h2>
+            <ul class="guide-checklist">
+              <li>Wilayah atau kelurahan yang terdampak</li>
+              <li>Waktu mulai terjadi</li>
+              <li>Jenis keluhan (keruh, warna, bau, endapan, rasa)</li>
+              <li>Satu keran atau beberapa keran</li>
+              <li>Apakah tetangga mengalami hal serupa</li>
+              <li>Foto kondisi air, jika ada</li>
+            </ul>
+            <p class="guide-lead">Data pribadi seperti alamat lengkap atau nomor pelanggan cukup diberikan langsung ke kanal resmi PDAM, tidak perlu ke chatbot.</p>
+          </section>
+
+          <!-- 5. Batasan Tirta -->
+          <section class="guide-section">
+            <h2><span class="step-no">5</span>Yang bisa dan tidak bisa dilakukan Tirta</h2>
+            <div class="guide-compare">
+              <div class="can">
+                <h3>Tirta bisa</h3>
+                <ul>
+                  <li>Membantu Anda menjelaskan keluhan</li>
+                  <li>Mengajukan pertanyaan yang relevan</li>
+                  <li>Memberi panduan awal yang hati-hati</li>
+                  <li>Menyusun ringkasan laporan</li>
+                </ul>
+              </div>
+              <div class="cannot">
+                <h3>Tirta tidak bisa</h3>
+                <ul>
+                  <li>Memastikan air aman diminum</li>
+                  <li>Menentukan penyebab atau kandungan air</li>
+                  <li>Menggantikan uji laboratorium</li>
+                  <li>Memberi status laporan resmi</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <div class="guide-cta">
+            <p>Ingin dibantu menjelaskan keluhan atau menyusun laporan?</p>
+            <button class="primary-btn" id="guideToChat" type="button">Tanya Tirta</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Halaman Info Gangguan (data simulasi) ===== -->
+      <section class="guide outage" id="outage" hidden aria-labelledby="outageTitle">
+        <div class="guide-inner">
+          <header class="guide-hero">
+            <span class="guide-eyebrow">Info Gangguan</span>
+            <h1 id="outageTitle">Info Gangguan Layanan</h1>
+            <p>Cari informasi gangguan berdasarkan kelurahan atau kecamatan.</p>
+          </header>
+
+          <!-- Banner simulasi: selalu tampil, sesuai aturan data dummy -->
+          <div class="sim-banner" role="note">
+            <svg viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg>
+            <p><strong>SIMULASI / DATA DUMMY — BUKAN INFORMASI RESMI.</strong> Data di halaman ini dibuat untuk demo dan tidak menggambarkan kondisi nyata.</p>
+          </div>
+
+          <form class="outage-search" id="outageForm" role="search" autocomplete="off">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="outageInput" placeholder="Ketik kelurahan atau kecamatan, misalnya Sukamaju" maxlength="60" aria-label="Cari wilayah">
+            <button class="primary-btn" type="submit">Cari</button>
+          </form>
+
+          <p class="outage-count" id="outageCount" aria-live="polite"></p>
+          <div class="outage-list" id="outageList"></div>
+
+          <div class="guide-notice" role="note">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <p><strong>Wilayah Anda tidak ada di daftar?</strong> Itu tidak berarti tidak ada gangguan. Jika mengalami masalah air, hubungi kanal pengaduan resmi PDAM setempat.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Input file tersembunyi, dibuka lewat tombol unggah -->
+  <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,application/pdf,text/plain" hidden>
+
+  <script src="chat.js"></script>
+</body>
+</html>

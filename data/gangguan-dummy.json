@@ -1,0 +1,57 @@
+[
+  {
+    "id": "SIM-001",
+    "wilayah": "Kelurahan Sukamaju",
+    "kecamatan": "Kecamatan Contoh Utara",
+    "jenis_gangguan": "Simulasi perbaikan pipa distribusi",
+    "dampak": "Simulasi: aliran kecil dan air dapat tampak keruh setelah aliran kembali",
+    "tahap": "Dalam penanganan",
+    "status": "SIMULASI",
+    "waktu_mulai": "2026-10-27T08:00:00+07:00",
+    "keterangan": "Data contoh untuk pengujian; bukan kejadian nyata."
+  },
+  {
+    "id": "SIM-002",
+    "wilayah": "Kelurahan Mekarsari",
+    "kecamatan": "Kecamatan Contoh Utara",
+    "jenis_gangguan": "Simulasi pembersihan reservoir",
+    "dampak": "Simulasi: aliran terhenti sementara",
+    "tahap": "Terjadwal",
+    "status": "SIMULASI",
+    "waktu_mulai": "2026-10-30T22:00:00+07:00",
+    "keterangan": "Data contoh untuk pengujian; bukan kejadian nyata."
+  },
+  {
+    "id": "SIM-003",
+    "wilayah": "Kelurahan Tirtajaya",
+    "kecamatan": "Kecamatan Contoh Selatan",
+    "jenis_gangguan": "Simulasi gangguan pompa distribusi",
+    "dampak": "Simulasi: tekanan air rendah di beberapa titik",
+    "tahap": "Dalam penanganan",
+    "status": "SIMULASI",
+    "waktu_mulai": "2026-10-28T05:30:00+07:00",
+    "keterangan": "Data contoh untuk pengujian; bukan kejadian nyata."
+  },
+  {
+    "id": "SIM-004",
+    "wilayah": "Kelurahan Cempaka Baru",
+    "kecamatan": "Kecamatan Contoh Selatan",
+    "jenis_gangguan": "Simulasi penggantian meter dan katup",
+    "dampak": "Simulasi: aliran terhenti di beberapa jalan",
+    "tahap": "Selesai",
+    "status": "SIMULASI",
+    "waktu_mulai": "2026-10-24T09:00:00+07:00",
+    "keterangan": "Data contoh untuk pengujian; bukan kejadian nyata."
+  },
+  {
+    "id": "SIM-005",
+    "wilayah": "Kelurahan Harapan Indah",
+    "kecamatan": "Kecamatan Contoh Timur",
+    "jenis_gangguan": "Simulasi pencucian jaringan pipa",
+    "dampak": "Simulasi: air dapat berubah warna sementara",
+    "tahap": "Terjadwal",
+    "status": "SIMULASI",
+    "waktu_mulai": "2026-11-02T07:00:00+07:00",
+    "keterangan": "Data contoh untuk pengujian; bukan kejadian nyata."
+  }
+]
